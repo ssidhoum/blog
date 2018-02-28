@@ -14,7 +14,7 @@
 				<td>
 					<span class="bold">
 					<a class="lienTitleChapter" href="chapters-<?=$chapters['id'];?>.html">
-						<?= $chapters['title'] ?> 
+						<?= $chapters->getTitle(); ?> 
 					</a>
 					</span>
 				</td>

@@ -27,7 +27,7 @@ class CommentsManagerPDO extends CommentsManager
  
     	foreach ($listeComments as $comments)
     	{
-      		$comments->setDate(new \DateTime($comments->Date()));
+      		$comments->setDate(new \DateTime($comments->getDate()));
     	}
  
     	$requete->closeCursor();
@@ -40,8 +40,8 @@ class CommentsManagerPDO extends CommentsManager
     	$q = $this->dao->prepare('INSERT INTO comments SET chapters = :chapters, author = :author, content = :content, date = NOW()');
  
     	$q->bindValue(':chapters', $comment->chapters(), \PDO::PARAM_INT);
-    	$q->bindValue(':author', $comment->author());
-    	$q->bindValue(':content', $comment->content());
+    	$q->bindValue(':author', $comment->getAuthor());
+    	$q->bindValue(':content', $comment->getContent());
  
     	$q->execute();
  
@@ -59,13 +59,13 @@ class CommentsManagerPDO extends CommentsManager
     	$q->bindValue(':chapters', $chapters, \PDO::PARAM_INT);
     	$q->execute();
  
-    	$q->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+    	$q->setFetchMode(\PDO::FETCH_CLASS, '\Entity\Comment');
  
     	$comments = $q->fetchAll();
  
     	foreach ($comments as $comment)
     	{
-      		$comment->setDate(new \DateTime($comment->date()));
+      		$comment->setDate(new \DateTime($comment->getDate()));
     	}
  
     	return $comments;
@@ -81,24 +81,14 @@ class CommentsManagerPDO extends CommentsManager
     	$this->dao->exec('DELETE FROM comments WHERE chapters = '.(int) $chapters);
   	}
 	
-	protected function modify(Comment $comment)
-  	{
-    	$q = $this->dao->prepare('UPDATE comments SET author = :author, content = :content WHERE id = :id');
- 
-    	$q->bindValue(':author', $comment->author());
-    	$q->bindValue(':content', $comment->content());
-    	$q->bindValue(':id', $comment->id(), \PDO::PARAM_INT);
- 
-    	$q->execute();
-  	}
-	
+
 	public function get($id)
   	{
     	$q = $this->dao->prepare('SELECT id, chapters, author, content FROM comments WHERE id = :id');
     	$q->bindValue(':id', (int) $id, \PDO::PARAM_INT);
     	$q->execute();
  
-    	$q->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+    	$q->setFetchMode(\PDO::FETCH_CLASS, '\Entity\Comment');
  
     	return $q->fetch();
   	}

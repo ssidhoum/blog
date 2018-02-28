@@ -24,14 +24,14 @@ class ChaptersManagerPDO extends ChaptersManager
 		}
  
     	$requete = $this->dao->query($sql);
-    	$requete->setFetchMode(\PDO::FETCH_CLASS,  '\Entity\Chapters');
+    	$requete->setFetchMode(\PDO::FETCH_CLASS, '\Entity\Chapters');
  
     	$listeChapters = $requete->fetchAll();
  
     	foreach ($listeChapters as $chapters)
     	{
-      		$chapters->setAddDate(new \DateTime($chapters->addDate()));
-      		$chapters->setUpdateDate(new \DateTime($chapters->updateDate()));
+      		$chapters->setAddDate(new \DateTime($chapters->getAddDate()));
+      		$chapters->setUpdateDate(new \DateTime($chapters->getUpdateDate()));
     	}
  		
 		/**for($i=1; $i<=$nbPage; $i++){
@@ -53,14 +53,14 @@ class ChaptersManagerPDO extends ChaptersManager
 		}
  
     	$requete = $this->dao->query($sql);
-    	$requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Chapters');
+    	$requete->setFetchMode(\PDO::FETCH_CLASS, '\Entity\Chapters');
  
     	$listeChapters = $requete->fetchAll();
  
     	foreach ($listeChapters as $chapters)
     	{
-      		$chapters->setAddDate(new \DateTime($chapters->addDate()));
-      		$chapters->setUpdateDate(new \DateTime($chapters->updateDate()));
+      		$chapters->setAddDate(new \DateTime($chapters->getAddDate()));
+      		$chapters->setUpdateDate(new \DateTime($chapters->getUpdateDate()));
     	}
  
     	$requete->closeCursor();
@@ -74,12 +74,12 @@ class ChaptersManagerPDO extends ChaptersManager
     	$requete->bindValue(':id', (int) $id, \PDO::PARAM_INT);
     	$requete->execute();
  
-    	$requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Chapters');
+    	$requete->setFetchMode(\PDO::FETCH_CLASS, '\Entity\Chapters');
  
     	if ($chapters = $requete->fetch())
     	{
-			$chapters->setAddDate(new \DateTime($chapters->addDate()));
-     		$chapters->setUpdateDate(new \DateTime($chapters->updateDate()));
+			$chapters->setAddDate(new \DateTime($chapters->getAddDate()));
+     		$chapters->setUpdateDate(new \DateTime($chapters->getUpdateDate()));
  
 			return $chapters;
     	}
@@ -96,8 +96,8 @@ class ChaptersManagerPDO extends ChaptersManager
   	{
     	$requete = $this->dao->prepare('UPDATE chapters SET title = :titre, content = :content, updateDate = NOW() WHERE id = :id');
  
-    	$requete->bindValue(':titre', $chapters->title());
-    	$requete->bindValue(':content', $chapters->content());
+    	$requete->bindValue(':titre', $chapters->getTitle());
+    	$requete->bindValue(':content', $chapters->getContent());
     	$requete->bindValue(':id', $chapters->id(), \PDO::PARAM_INT);
  
     	$requete->execute();
@@ -107,8 +107,8 @@ class ChaptersManagerPDO extends ChaptersManager
   	{
 		
     		$requete = $this->dao->prepare('INSERT INTO chapters SET title = :titre, content = :contenu, addDate = NOW(), updateDate = NOW()');
-    		$requete->bindValue(':titre', $chapters->title());
-			$requete->bindValue(':contenu', $chapters->content());
+    		$requete->bindValue(':titre', $chapters->getTitle());
+			$requete->bindValue(':contenu', $chapters->getContent());
 			
 			$requete->execute();
 			

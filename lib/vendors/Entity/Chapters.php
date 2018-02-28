@@ -6,7 +6,8 @@ use \BLOGFram\Entity;
 class Chapters extends Entity
 {
 	
-	protected 	$publi,
+	protected 	$id,
+				$publi,
 	  			$title,
             	$content,
             	$addDate,
@@ -56,6 +57,10 @@ class Chapters extends Entity
   	}
 	
 	//Getters
+	
+	public function getId(){
+		return $this->id;
+	}
 	
 	public function getPubli()
   	{

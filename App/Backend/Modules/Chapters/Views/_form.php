@@ -10,7 +10,7 @@
 	if(isset($chapters) && !$chapters->isNew())
 	{
 	?>
-    	<input type="hidden" name="id" value="<?= $chapters['id'] ?>" />
+    	<input type="hidden" name="id" value="<?=$chapters->getId();?>" />
     	<input type="submit" value="Modifier" name="modifier" />
 	<?php
 	}

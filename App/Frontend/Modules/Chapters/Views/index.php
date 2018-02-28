@@ -36,7 +36,7 @@
 		<div id="news" class="col-6">
 			<h3>
      			<span class="bold">
-     			<a class="lienTitleChapter" href="chapters-<?= $chapters['id']; ?>.html">
+     			<a class="lienTitleChapter" href="chapters-<?= $chapters->getId(); ?>.html">
      				<?= $chapters->getTitle(); ?>
      			</a>
      			</span>

@@ -39,7 +39,7 @@ class CommentsManagerPDO extends CommentsManager
   	{
     	$q = $this->dao->prepare('INSERT INTO comments SET chapters = :chapters, author = :author, content = :content, date = NOW()');
  
-    	$q->bindValue(':chapters', $comment->chapters(), \PDO::PARAM_INT);
+    	$q->bindValue(':chapters', $comment->getChapters(), \PDO::PARAM_INT);
     	$q->bindValue(':author', $comment->getAuthor());
     	$q->bindValue(':content', $comment->getContent());
  

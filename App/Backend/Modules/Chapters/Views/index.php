@@ -55,10 +55,10 @@
         			<td>
         				 <?= $chapters->getAddDateView();?></td>
         			<td>
-            			<a href="/admin/chapters-update-<?=$chapters['id'];?>.html">
+            			<a href="/admin/chapters-update-<?=$chapters->getId();?>.html">
                				 <i class="material-icons">create</i>
            				</a>
-           				<a class="deleteChap" id="<?= $chapters['id'];?>">
+           				<a class="deleteChap" id="<?=$chapters->getId();?>">
                 			<i class="material-icons">delete_sweep</i>
             			</a>
         			</td>
@@ -106,7 +106,7 @@
 						le <?=$comments->getDateView();?>
 					</td>
 					<td>
-						<a class="deleteCom" data-toggle="modal"  id="<?= $comments['id']?>">
+						<a class="deleteCom" data-toggle="modal"  id="<?= $comments->getId();?>">
 							<i class="deleteComIcon material-icons">delete_sweep</i>
 						</a>
 					</td>

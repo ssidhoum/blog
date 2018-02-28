@@ -27,7 +27,7 @@
  	<p class="notifDate">
  		<?= $comment->getDateView();?>
  	</p>
- 	<a class="addCom" href="commenter-<?= $chapters['id'] ?>.html">
+ 	<a class="addCom" href="commenter-<?= $chapters->getId(); ?>.html">
 		<i class="material-icons">comment</i>
 		Ajouter un commentaire
 	</a>

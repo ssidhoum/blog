@@ -4,7 +4,8 @@ use \BLOGFram\Entity;
 
 class Comment extends Entity
 {
-  	protected 	$chapters,
+  	protected 	$id,
+				$chapters,
 				$author,
             	$content,
             	$date;
@@ -46,6 +47,11 @@ class Comment extends Entity
 	}
 	
 	//Getter
+	
+	public function getId(){
+		return $this->id;
+	}
+	
 	public function getChapters()
   	{
 		return $this->chapters;

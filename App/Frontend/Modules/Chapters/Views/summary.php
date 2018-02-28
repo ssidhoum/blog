@@ -13,7 +13,7 @@
 			<tr>
 				<td>
 					<span class="bold">
-					<a class="lienTitleChapter" href="chapters-<?=$chapters['id'];?>.html">
+					<a class="lienTitleChapter" href="chapters-<?=$chapters->getId();?>.html">
 						<?= $chapters->getTitle(); ?> 
 					</a>
 					</span>

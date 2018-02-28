@@ -60,6 +60,7 @@ class Chapters extends Entity
 	
 	public function getId(){
 		return $this->id;
+		
 	}
 	
 	public function getPubli()
@@ -107,6 +108,18 @@ class Chapters extends Entity
 			return "null";
 		} else{
 			return "en ligne";
+		}
+	}
+	
+	//fonction qui vérifie si la date de modification existe?
+	public function updateDateExists(){
+		if(($this -> updateDate) < ($date = $this -> addDate)){
+			return  $this -> addDate -> format ('d/m/Y');
+		} else {
+			return $this -> updateDate -> format ('d/m/Y');
+		}
+		if (($date = $this -> addDate) != ($this -> updateDate)){
+			return $this -> updateDate -> format ('d/m/Y');
 		}
 	}
 	

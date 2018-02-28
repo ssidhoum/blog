@@ -53,12 +53,13 @@
         				le <?= $chapters->getAddDateView(); ?>
        				 </td>
         			<td>
-        				 <?= $chapters->getAddDateView();?></td>
+        				 <?= $chapters->updateDateExists();?></td>
         			<td>
-            			<a href="/admin/chapters-update-<?=$chapters->getId();?>.html">
+            			<a href="/admin/chapters-update-<?= $chapters->getId(); ?>.html">
                				 <i class="material-icons">create</i>
            				</a>
-           				<a class="deleteChap" id="<?=$chapters->getId();?>">
+           				<a class="deleteChap" id="<?= $chapters->getId(); ?>">
+
                 			<i class="material-icons">delete_sweep</i>
             			</a>
         			</td>

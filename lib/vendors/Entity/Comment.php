@@ -50,6 +50,7 @@ class Comment extends Entity
 	
 	public function getId(){
 		return $this->id;
+		
 	}
 	
 	public function getChapters()

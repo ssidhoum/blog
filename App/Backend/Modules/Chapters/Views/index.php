@@ -8,14 +8,14 @@
 				<span>
 					<i class="material-icons">book</i>
 				</span>
-				<?= $nombreChapters ?>
+				<?= $nombreChapters;?>
 				Chapitres	
 			</p>
 			<p>
 				<span>
 					<i class="material-icons">comment</i>
 				</span>
-				<?= $nombreComments?>
+				<?= $nombreComments;?>
 				Commentaires
 			</p>
 		</div>
@@ -47,13 +47,13 @@
 				<?php foreach ($listeChapters as $chapters):?>
     			<tr>
         			<td>
-        				<?= $chapters['title']; ?>
+        				<?= $chapters->getTitle(); ?>
         			</td>
         			<td>
-        				le <?= $chapters->getAddDate() ?>
+        				le <?= $chapters->getAddDateView(); ?>
        				 </td>
         			<td>
-        				 <?= $chapters->checkDate() ?></td>
+        				 <?= $chapters->getAddDateView();?></td>
         			<td>
             			<a href="/admin/chapters-update-<?=$chapters['id'];?>.html">
                				 <i class="material-icons">create</i>
@@ -63,7 +63,7 @@
             			</a>
         			</td>
         			<td>
-        				<?= $chapters->checkStatut(); ?>
+        				A REFAIRE
         			</td>
     			</tr>
 				<?php endforeach; ?>
@@ -100,10 +100,10 @@
 				<?php foreach ($listeComments as $comments) :?>
 				<tr>
 					<td>
-						<?=$comments['author']?>
+						<?=$comments->getAuthor();;?>
 					</td>
 					<td>
-						le <?=$comments->getDate()?>
+						le <?=$comments->getDateView();?>
 					</td>
 					<td>
 						<a class="deleteCom" data-toggle="modal"  id="<?= $comments['id']?>">

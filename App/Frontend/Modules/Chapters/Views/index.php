@@ -37,12 +37,12 @@
 			<h3>
      			<span class="bold">
      			<a class="lienTitleChapter" href="chapters-<?= $chapters['id']; ?>.html">
-     				<?= $chapters['title']; ?>
+     				<?= $chapters->getTitle(); ?>
      			</a>
      			</span>
     		</h3>
     		<p>
-    			<?= nl2br($chapters['content']); ?>
+    			<?= nl2br($chapters->getContent()); ?>
    	 		</p>
 		</div>
 		

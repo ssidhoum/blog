@@ -63,7 +63,7 @@
             			</a>
         			</td>
         			<td>
-        				A REFAIRE
+        				<?= $chapters->isOnline();?>
         			</td>
     			</tr>
 				<?php endforeach; ?>

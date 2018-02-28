@@ -99,4 +99,15 @@ class Chapters extends Entity
 		return $date->format('d/m/Y');
 	}
 	
+	//fonction qui retourne le statut du chapitre, il est en LIGNE ou en BROUILLON
+	public function isOnline(){
+		if($this->publi === "0"){
+			return "brouillon";
+		} elseif(is_null($this->publi)){
+			return "null";
+		} else{
+			return "en ligne";
+		}
+	}
+	
 }

@@ -21,7 +21,7 @@ class CommentsManagerPDO extends CommentsManager
 		}
  
     	$requete = $this->dao->query($sql);
-    	$requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+    	$requete->setFetchMode(\PDO::FETCH_CLASS, '\Entity\Comment');
  
     	$listeComments  = $requete->fetchAll();
  

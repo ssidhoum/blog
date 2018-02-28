@@ -29,9 +29,7 @@ abstract class CommentsManager extends Manager
 	abstract public function delete($id);
 	
 	abstract public function deleteFromChapters($chapters);
-	
-	abstract protected function modify(Comment $comment);
-	
+		
 	abstract public function get($id);
 	
 }

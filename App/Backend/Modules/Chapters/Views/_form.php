@@ -22,6 +22,7 @@
 	  }
 	  ?>
  		<input type="checkbox" name="case" id="case"/> <label for="case">Mettre en ligne</label>
+
   </p>
 </form>
 

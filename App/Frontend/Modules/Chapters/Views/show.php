@@ -16,17 +16,17 @@
 		Aucun commentaire n'a encore été posté. Soyez le premier à en laisser un !
 	</p>
 	<?php endif; ?>
+ 	<?php foreach ($comments as $comment) :?>
  	<div class="com">
- 		<?php foreach ($comments as $comment) :?>
  			<span class="bold">
  			<?= htmlspecialchars($comment->getAuthor()); ?> 
  			</span>
  			<?= nl2br(htmlspecialchars($comment->getContent())); ?>
- 		<?php endforeach; ?>
  	</div>
  	<p class="notifDate">
  		<?= $comment->getDateView();?>
  	</p>
+ 	<?php endforeach; ?>
  	<a class="addCom" href="commenter-<?= $chapters->getId(); ?>.html">
 		<i class="material-icons">comment</i>
 		Ajouter un commentaire

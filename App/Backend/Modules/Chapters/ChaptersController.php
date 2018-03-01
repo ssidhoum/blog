@@ -55,30 +55,35 @@ class ChaptersController extends BackController
   	}
 	
 	public function processForm(HTTPRequest $request)
-  	{
+  	{	
     	$chapters = new Chapters([
       		'title' => $request->postData('titre'),
-      		'content' => $request->postData('contenu')
+      		'content' => $request->postData('contenu'),
     	]);
-
-		($request->postData('case')) ? $chapters->setPubli(1) : $chapters->setPubli(0);
-
+		
+		$request->postExists('case') ? $chapters->setPubli(1) : $chapters->setPubli(0);
+		
     	if ($request->postExists('id'))
     	{
       		$chapters->setId($request->postData('id'));
+	
     	}
  
     	if ($chapters->isValid())
     	{
+
       		$this->managers->getManagerOf('Chapters')->save($chapters);
- 
+			
       		$this->app->user()->setFlash($chapters->isNew() ? 'Le chapitre a bien été ajouté !' : 'Le chapitre a bien été modifié !');
     	}
     	else
     	{
       		$this->page->addVar('erreurs', $chapters->erreurs());
     	}
+		
     	$this->page->addVar('news', $chapters);
+		var_dump($chapters->getPubli());
+		
   	}
 	
 	public function executeDeleteComment(HTTPRequest $request)
